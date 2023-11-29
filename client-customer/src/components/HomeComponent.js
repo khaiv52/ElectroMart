@@ -256,8 +256,7 @@ class Home extends Component {
                       <i class="fa-solid fa-building"></i> ELECTRO MART
                     </h6>
                     <p>
-                      Here you can use rows and columns to organize your footer content. Lorem ipsum
-                      dolor sit amet, consectetur adipisicing elit.
+                      Electro Mart is a premier online shopping destination, offering a modern and convenient experience for technology and entertainment enthusiasts. We take pride in our diverse range of products from leading global brands, ensuring top-notch quality and excellent customer service. Explore the world of cutting-edge technology and entertainment at Electro Mart today!
                     </p>
                   </div>
                   {/* Grid column */}
