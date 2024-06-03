@@ -3,10 +3,8 @@ import MyContext from '../contexts/MyContext';
 import CartUtil from '../utils/CartUtil';
 import axios from 'axios';
 import withRouter from '../utils/withRouter';
-
 class Mycart extends Component {
   static contextType = MyContext; // using this.context to access global state
-
   render() {
     const mycart = this.context.mycart.map((item, index) => {
       return (
@@ -23,7 +21,6 @@ class Mycart extends Component {
         </tr>
       );
     });
-
     return (
       <div className="align-center">
         <h2 className="text-center">ITEM LIST</h2>
@@ -52,7 +49,6 @@ class Mycart extends Component {
       </div>
     );
   }
-
   lnkRemoveClick(id) {
     const mycart = this.context.mycart;
     const index = mycart.findIndex(x => x.product._id === id);
@@ -61,7 +57,6 @@ class Mycart extends Component {
       this.context.setMycart(mycart);
     }
   }
-
   lnkCheckoutClick() {
     if (window.confirm('ARE YOU SURE?')) {
       if (this.context.mycart.length > 0) {
@@ -74,27 +69,24 @@ class Mycart extends Component {
           this.props.navigate('/login');
         }
       } else {
-        alert('Your cart is empty. Please add items to the cart before checking out.');
+        alert('Your cart is empty');
       }
     }
   }
-
   // apis
   apiCheckout(total, items, customer) {
     const body = { total: total, items: items, customer: customer };
     const config = { headers: { 'x-access-token': this.context.token } };
-    
     axios.post('/api/customer/checkout', body, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('Checkout successful! Thank you for your purchase.');
+        alert('OK BABY!');
         this.context.setMycart([]);
         this.props.navigate('/home');
       } else {
-        alert('Checkout failed. Please try again.');
+        alert('SORRY BABY!');
       }
     });
   }
 }
-
 export default withRouter(Mycart);

@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Home extends Component {
   constructor(props) {
@@ -8,6 +11,7 @@ class Home extends Component {
     this.state = {
       newprods: [],
       hotprods: [],
+      bestprods: [],
       categories: [],
       activeIndex: 0
     };
@@ -50,8 +54,8 @@ class Home extends Component {
 
   renderCarouselItems() {
     const carouselItems = [
-      { src: 'https://i0.wp.com/www.applestore.pk/wp-content/uploads/2020/03/iPhone-11-Pro-Inner-Banner-1920-X-710-Website.jpg?ssl=1', alt: 'First slide' },
-      { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2hFsGMMxNwM47_zO6Lfz673mxl5kliCPlrA&usqp=CAU', alt: 'Second slide' },
+      { src: 'https://www.patternb.com/wp-content/uploads/2019/10/big-banner-iphone-11-accessories.jpg', alt: 'First slide' },
+      { src: 'https://i.pinimg.com/originals/94/99/ef/9499ef4235609a75d4a99f4b55213afa.png', alt: 'Second slide' },
       { src: 'https://file.hstatic.net/1000347078/collection/banner_macbook_92054b106e2d457f9391d59825973023.jpg', alt: 'Third slide' },
     ];
 
@@ -64,6 +68,7 @@ class Home extends Component {
 
   handleCarouselIndicatorClick = (index) => {
     this.setState({ activeIndex: index });
+    $('#carouselExampleIndicators').carousel(index);
   }
 
   handleScrollToTop = () => {
@@ -122,7 +127,7 @@ class Home extends Component {
 
     return (
       <div>
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-aos="fade-up"> 
           <ol className="carousel-indicators">
             {this.renderCarouselIndicators()}
           </ol>
@@ -151,6 +156,13 @@ class Home extends Component {
               <div className="product-list">{this.renderProducts(hotprods)}</div>
             </div>
           )}
+
+          {bestprods.length > 0 && (
+            <div className="product-section align-center">
+              <h2 className="text-center background-h2">BEST SELLER</h2>
+              <div className="product-list">{this.renderProducts(bestprods)}</div>
+            </div>
+          )}
           <hr></hr>
           <div id="list-categories" className="list-categories mb-4">
             <ul className="menu">
@@ -161,13 +173,13 @@ class Home extends Component {
           <div className='services mt-4 mb-4'>
             <h2 className='text-center background-h2 mb-4'>OUR SERVICES</h2>
             <ul className='align-center list-services'>
-              <li>Fast Delivery <i class="fa-solid fa-truck-fast"></i></li>
-              <li>Quality Products <i class="fa-solid fa-medal"></i></li>
-              <li>24/7 Customer Support <i class="fa-solid fa-phone"></i></li>
+              <li data-aos="fade-right">Fast Delivery <i class="fa-solid fa-truck-fast"></i></li>
+              <li data-aos="zoom-in">Quality Products <i class="fa-solid fa-medal"></i></li>
+              <li data-aos="fade-left">24/7 Customer Support <i class="fa-solid fa-phone"></i></li>
               {/* Thêm các dòng khác tương tự */}
             </ul>
           </div>
-          <div className="customer-reviews ">
+          <div className="customer-reviews">
             <h3 className="text-center background-h2">CUSTOMER REVIEWS</h3>
             <div className='customers row'>
               <div className='customer-item col-12 col-sm-6 col-md-4 text-center'>
@@ -296,7 +308,7 @@ class Home extends Component {
                   <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     {/* Links */}
                     <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p><i className="fas fa-home me-3"></i> 69/68 Dang Thuy Tram Street, Ward 13, Binh Thanh District, Ho Chi Minh City 70000, Vietnam.</p>
+                    <p><i className="fas fa-home me-3"></i> New York, NY 10012, US</p>
                     <p>
                       <i className="fas fa-envelope me-3"></i>
                       info@example.com
@@ -326,8 +338,12 @@ class Home extends Component {
   componentDidMount() {
     this.apiGetNewProducts();
     this.apiGetHotProducts();
+    this.apiGetBestProducts();
     this.apiGetCategories();
     this.initCarousel();
+    AOS.init({
+      duration: 2000, // thời gian hiệu ứng
+    });
   }
 
   componentDidUpdate() {
@@ -349,6 +365,13 @@ class Home extends Component {
     axios.get('/api/customer/products/hot').then((res) => {
       const result = res.data;
       this.setState({ hotprods: result });
+    });
+  }
+
+  apiGetBestProducts() {
+    axios.get('/api/customer/products/best').then((res) => {
+      const result = res.data;
+      this.setState({ bestprods: result });
     });
   }
 

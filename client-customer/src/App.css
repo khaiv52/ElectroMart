@@ -729,10 +729,12 @@ td {
   color: #61dafb; /* Màu chữ khi di chuột qua trong chủ đề tối (có thể điều chỉnh) */
 }
 
+/* Anchor */
+/* Nút trỏ lên */
 .scroll-up {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   background-color: #007bff;
   color: white;
   padding: 5px 12px;

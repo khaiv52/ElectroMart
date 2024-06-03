@@ -9,7 +9,6 @@ class Active extends Component {
       txtToken: ''
     };
   }
-
   render() {
     return (
       <div className="body-login">
@@ -68,7 +67,6 @@ class Active extends Component {
       </div>
     );
   }
-
   // event-handlers
   btnActiveClick(e) {
     e.preventDefault();
@@ -77,22 +75,20 @@ class Active extends Component {
     if (id && token) {
       this.apiActive(id, token);
     } else {
-      alert('Please input both ID and Token.');
+      alert('Please input id and token');
     }
   }
-
   // apis
   apiActive(id, token) {
     const body = { id: id, token: token };
     axios.post('/api/customer/active', body).then((res) => {
       const result = res.data;
       if (result) {
-        alert('Account activation successful!');
+        alert('OK BABY!');
       } else {
-        alert('Account activation failed. Please check your ID and Token.');
+        alert('SORRY BABY!');
       }
     });
   }
 }
-
 export default Active;

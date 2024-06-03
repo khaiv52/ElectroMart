@@ -12,7 +12,7 @@ import Myprofile from './MyProfileComponent';
 import Mycart from './MyCartComponent';
 import Myorders from './MyOrderComponent';
 import Gmap from './GmapComponent';
-import TawkMessenger from './TawkMessengerComponent';
+
 class Main extends Component {
   render() {
     return (
@@ -33,7 +33,6 @@ class Main extends Component {
             <Route path='/myorders' element={<Myorders />} />
             <Route path='/gmap' element={<Gmap />} />
           </Routes>
-          <TawkMessenger />
           <a href="#" className="scroll-up" onClick={this.handleScrollToTop}>↑</a>
       </div>
     );

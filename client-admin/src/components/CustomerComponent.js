@@ -25,7 +25,7 @@ class Customer extends Component {
           <td>{item.active}</td>
           <td>
             {item.active === 0 ?
-              <span className="link" onClick={() => this.lnkEmailClick(item)}>EMAIL</span>
+              <span className="link">EMAIL</span>
               :
               <span className="link" onClick={() => this.lnkDeactiveClick(item)}>DEACTIVE</span>}
           </td>
@@ -153,31 +153,13 @@ class Customer extends Component {
   apiPutCustomerDeactive(id, token) {
     const body = { token: token };
     const config = { headers: { 'x-access-token': this.context.token } };
-
-    axios.put('/api/admin/customers/deactive/' + id, body, config)
-        .then((res) => {
-            const result = res.data;
-            if (result) {
-                this.apiGetCustomers();
-            } else {
-                alert('Oops! Something went wrong. Please try again.');
-            }
-        })
-        .catch((error) => {
-            console.error('An error occurred while processing your request:', error);
-            alert('Oops! Something went wrong. Please try again.');
-        });
-    }
-  // event-handlers
-  lnkEmailClick(item) {
-    this.apiGetCustomerSendmail(item._id);
-  }
-  // apis
-  apiGetCustomerSendmail(id) {
-    const config = { headers: { 'x-access-token': this.context.token } };
-    axios.get('/api/admin/customers/sendmail/' + id, config).then((res) => {
+    axios.put('/api/admin/customers/deactive/' + id, body, config).then((res) => {
       const result = res.data;
-      alert(result.message);
+      if (result) {
+        this.apiGetCustomers();
+      } else {
+        alert('SORRY BABY!');
+      }
     });
   }
 }

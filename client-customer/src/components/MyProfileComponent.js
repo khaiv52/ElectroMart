@@ -152,10 +152,10 @@ class Myprofile extends Component {
     axios.put('/api/customer/customers/' + id, customer, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('Profile updated successfully!');
+        alert('OK BABY!');
         this.context.setCustomer(result);
       } else {
-        alert('Failed to update profile. Please try again.');
+        alert('SORRY BABY!');
       }
     });
   }

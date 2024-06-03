@@ -179,10 +179,10 @@ class ProductDetail extends Component {
     axios.delete('/api/admin/products/' + id, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('Product deleted successfully.');
+        alert('OK BABY!');
         this.apiGetProducts();
       } else {
-        alert('Failed to delete product. Please try again.');
+        alert('SORRY BABY!');
       }
     });
   }
@@ -192,10 +192,10 @@ class ProductDetail extends Component {
     axios.put("/api/admin/products/" + id, prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert("Product updated successfully.");
+        alert("OK BABY!");
         this.apiGetProducts();
       } else {
-        alert("Failed to update product. Please try again.");
+        alert("SORRY BABY!");
       }
     });
   }
@@ -222,16 +222,15 @@ class ProductDetail extends Component {
     }
   }
   // apis
-  // apiPostProduct
   apiPostProduct(prod) {
     const config = { headers: { "x-access-token": this.context.token } };
     axios.post("/api/admin/products", prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert("Product added successfully.");
+        alert("OK BABY!");
         this.apiGetProducts();
       } else {
-        alert("Failed to add product. Please try again.");
+        alert("SORRY BABY!");
       }
     });
   }
