@@ -34,15 +34,14 @@ const CustomerDAO = {
     const customers = await Models.Customer.find(query).exec();
     return customers;
   },
+  async selectAll() {
+    const query = {};
+    const customers = await Models.Customer.find(query).exec();
+    return customers;
+  },
   async selectByID(_id) {
     const customer = await Models.Customer.findById(_id).exec();
     return customer;
-  },
-  async active(_id, token, active) {
-    const query = { _id: _id, token: token };
-    const newvalues = { active: active };
-    const result = await Models.Customer.findOneAndUpdate(query, newvalues, { new: true });
-    return result;
   }
 };
 module.exports = CustomerDAO;

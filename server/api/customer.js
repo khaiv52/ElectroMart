@@ -29,6 +29,11 @@ router.get("/products/new", async function (req, res) {
   res.json(products);
 });
 router.get("/products/hot", async function (req, res) {
+  const products = await ProductDAO.selectTopHot(3);
+  res.json(products);
+});
+
+router.get("/products/best", async function (req, res) {
   const products = await ProductDAO.selectTopHot(6);
   res.json(products);
 });
@@ -121,6 +126,14 @@ router.get("/token", JwtUtil.checkToken, function (req, res) {
 });
 
 // customer
+router.post("/active", async function (req, res) {
+  const _id = req.body.id;
+  const token = req.body.token;
+  const result = await CustomerDAO.active(_id, token, 1);
+  res.json(result);
+});
+
+// customer
 router.post("/login", async function (req, res) {
   const username = req.body.username;
   const password = req.body.password;
@@ -199,13 +212,6 @@ router.get(
     const _cid = req.params.cid;
     const orders = await OrderDAO.selectByCustID(_cid);
     res.json(orders);
-  },
-)
-  // customer
-router.post('/active', async function (req, res) {
-  const _id = req.body.id;
-  const token = req.body.token;
-  const result = await CustomerDAO.active(_id, token, 1);
-  res.json(result);
-})
+  }
+);
 module.exports = router;
