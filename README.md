@@ -1,6 +1,14 @@
 # ElectroMart
 This is the MERN shopping project for a website carried out by Team G06 - Khải, Lâm, Hiền, Thanh.
 
+# Server Link:
+**`https://electro-mart.onrender.com/admin/`**
+- Username: Admin
+- Pass: 123
+# Client Link:
+**`https://electro-mart.onrender.com/home`**
+- Username: nhockha016145
+- Pass: khai01645
 # The following steps to run the projects:
 + Download Mongo Compass, add and connect to the project's connection: mongodb+srv://MinhKhai:khai01645@clustertest.pim8ki9.mongodb.net/
 + Or create a new database on the official website and add the corresponding collections. Then, adjust the myConstant.js file located at "server > utils > MyConstants.js".
