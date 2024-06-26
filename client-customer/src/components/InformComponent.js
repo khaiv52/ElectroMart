@@ -8,7 +8,7 @@ class Inform extends Component {
       <div className="border-bottom">
         <div className="float-left">
           {this.context.token === '' ?
-            <div>
+            <div className='box-nav'>
               <div class="link-nav">
                 <Link className="nav-links" to='/login'>Login</Link>
                 <Link className="nav-links" to='/signup'>Sign-up</Link>
@@ -28,7 +28,6 @@ class Inform extends Component {
           <Link className="mycart-link" to='/mycart'>My cart</Link>
           <span className="cart-info">have <b>{this.context.mycart.length}</b> items</span>
         </div>
-        <div className="float-clear" />
       </div>
 
     );

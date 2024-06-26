@@ -78,17 +78,19 @@ class Active extends Component {
       alert('Please input id and token');
     }
   }
+  
   // apis
   apiActive(id, token) {
     const body = { id: id, token: token };
     axios.post('/api/customer/active', body).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        alert('You have successfully activated your account.');
       } else {
-        alert('SORRY BABY!');
+        alert('Sorry, there was an issue with your activation request. Please try again later.');
       }
     });
   }
+
 }
 export default Active;

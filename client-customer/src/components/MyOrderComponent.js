@@ -43,39 +43,44 @@ class Myorders extends Component {
     }
     return (
       <div>
-        <div className="align-center mt-4">
+        <div className="w-100 align-center mt-4">
           <h2 className="text-center mb-4">ORDER LIST</h2>
-          <table className="datatable" border="1">
-            <tbody>
-              <tr className="datatable">
-                <th>ID</th>
-                <th>Creation date</th>
-                <th>Cust.name</th>
-                <th>Cust.phone</th>
-                <th>Total</th>
-                <th>Status</th>
-              </tr>
-              {orders}
-            </tbody>
-          </table>
-        </div>
-        {this.state.order ?
-          <div className="align-center mt-4 mb-4">
-            <h2 className="text-center mb-4">ORDER DETAIL</h2>
-            <table className="datatable" border="1">
+          <div class="table-wrapper">
+            <table className="
+            " border="1">
               <tbody>
                 <tr className="datatable">
-                  <th>No.</th>
-                  <th>Prod.ID</th>
-                  <th>Prod.name</th>
-                  <th>Image</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Amount</th>
+                  <th>ID</th>
+                  <th>Creation date</th>
+                  <th>Cust.name</th>
+                  <th>Cust.phone</th>
+                  <th>Total</th>
+                  <th>Status</th>
                 </tr>
-                {items}
+                {orders}
               </tbody>
             </table>
+          </div>
+        </div>
+        {this.state.order ?
+          <div className="w-100 align-center mt-4 mb-4">
+            <h2 className="text-center mb-4">ORDER DETAIL</h2>
+            <div class="table-wrapper">
+              <table className="datatable" border="1">
+                <tbody>
+                  <tr className="datatable">
+                    <th>No.</th>
+                    <th>Prod.ID</th>
+                    <th>Prod.name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                  </tr>
+                  {items}
+                </tbody>
+              </table>
+            </div>
           </div>
           : <div />}
       </div>

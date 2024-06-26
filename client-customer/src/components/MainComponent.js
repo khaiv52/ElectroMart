@@ -33,7 +33,6 @@ class Main extends Component {
             <Route path='/myorders' element={<Myorders />} />
             <Route path='/gmap' element={<Gmap />} />
           </Routes>
-          <a href="#" className="scroll-up" onClick={this.handleScrollToTop}>↑</a>
       </div>
     );
   }

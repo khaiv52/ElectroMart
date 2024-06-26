@@ -31,7 +31,7 @@ class Product extends Component {
     return (
       <div className="product-section align-center mt-4">
         <h2 className="text-center mb-4">LIST PRODUCTS</h2>
-        <div className='product-list pad-150'>
+        <div className='product-list'>
           {prods}
         </div>
       </div>

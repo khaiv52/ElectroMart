@@ -84,7 +84,7 @@ class ProductDetail extends Component {
         mycart[index].quantity += quantity;
       }
       this.context.setMycart(mycart);
-      alert('OK BABY!');
+      alert('Product successfully added to cart!');
     } else {
       alert('Please input quantity');
     }

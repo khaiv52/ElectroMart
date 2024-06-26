@@ -22,30 +22,32 @@ class Mycart extends Component {
       );
     });
     return (
-      <div className="align-center">
+      <div className="w-100 align-center mt-4">
         <h2 className="text-center">ITEM LIST</h2>
-        <table className="datatable" border="1">
-          <tbody>
-            <tr className="datatable">
-              <th>No.</th>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Amount</th>
-              <th>Action</th>
-            </tr>
-            {mycart}
-            <tr>
-              <td colSpan="6"></td>
-              <td>Total</td>
-              <td>{CartUtil.getTotal(this.context.mycart)}</td>
-              <td><span className="link" onClick={() => this.lnkCheckoutClick()}>CHECKOUT</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-wrapper">
+          <table className="datatable" border="1">
+            <tbody>
+              <tr className="datatable">
+                <th>No.</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+              {mycart}
+              <tr>
+                <td colSpan="6"></td>
+                <td>Total</td>
+                <td>{CartUtil.getTotal(this.context.mycart)}</td>
+                <td><span className="link" onClick={() => this.lnkCheckoutClick()}>CHECKOUT</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
@@ -80,11 +82,11 @@ class Mycart extends Component {
     axios.post('/api/customer/checkout', body, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        alert('Your order has been placed successfully!');
         this.context.setMycart([]);
         this.props.navigate('/home');
       } else {
-        alert('SORRY BABY!');
+        alert('There was an issue with your order. Please try again.');
       }
     });
   }
