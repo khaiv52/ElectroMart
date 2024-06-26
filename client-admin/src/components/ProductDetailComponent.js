@@ -37,7 +37,7 @@ class ProductDetail extends Component {
     });
     return (
       <div className="float-right">
-        <h2 className="text-center">PRODUCT DETAIL</h2>
+        <h2 className="product-title__text text-center">PRODUCT DETAIL</h2>
         <form className="form-detail">
           <table className="table-detail">
             <tbody className="body-detail">
@@ -121,7 +121,7 @@ class ProductDetail extends Component {
                   />
                 </td>
               </tr>
-              <tr>
+              <tr> 
                 <td colSpan="2">
                   <img
                     src={this.state.imgProduct}
@@ -179,10 +179,10 @@ class ProductDetail extends Component {
     axios.delete('/api/admin/products/' + id, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        alert('Product successfully deleted!');
         this.apiGetProducts();
       } else {
-        alert('SORRY BABY!');
+        alert('Failed to delete product. Please try again.');
       }
     });
   }
@@ -192,10 +192,10 @@ class ProductDetail extends Component {
     axios.put("/api/admin/products/" + id, prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert("OK BABY!");
+        alert("Product successfully updated!");
         this.apiGetProducts();
       } else {
-        alert("SORRY BABY!");
+        alert("Failed to update product. Please try again.");
       }
     });
   }
@@ -227,10 +227,10 @@ class ProductDetail extends Component {
     axios.post("/api/admin/products", prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert("OK BABY!");
+        alert("Product successfully added!");
         this.apiGetProducts();
       } else {
-        alert("SORRY BABY!");
+        alert("Failed to add product. Please try again.");
       }
     });
   }

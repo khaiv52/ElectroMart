@@ -25,7 +25,7 @@ class Customer extends Component {
           <td>{item.active}</td>
           <td>
             {item.active === 0 ?
-              <span className="link">EMAIL</span>
+              <span className="link" onClick={() => this.lnkEmailClick(item)}>EMAIL</span>
               :
               <span className="link" onClick={() => this.lnkDeactiveClick(item)}>DEACTIVE</span>}
           </td>
@@ -158,9 +158,26 @@ class Customer extends Component {
       if (result) {
         this.apiGetCustomers();
       } else {
-        alert('SORRY BABY!');
+        alert('Failed to deactivate the customer account. Please try again.');
       }
     });
   }
+    // event handlers
+    lnkEmailClick(item) {
+      this.apiGetCustomersSendEmail(item._id);
+    }
+    
+    // apis
+    apiGetCustomersSendEmail(id) {
+      const config = { headers: { 'x-access-token': this.context.token } };
+      axios.get('/api/admin/customers/sendmail/' + id, config).then((res) => {
+        const result = res.data;
+        if(result) {
+          alert('Email sent successfully to the customer.');
+        } else {
+          alert('Failed to send mail to the customer. Please try again.');
+        }
+      });
+    }
 }
 export default Customer;

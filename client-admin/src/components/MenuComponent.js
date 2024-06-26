@@ -30,6 +30,9 @@ class Menu extends Component {
           <li className="menu">
             <Link to="/admin/customer">Customer</Link>
           </li>
+          <li className="menu">
+            <Link to="/admin/revenue">Statistic</Link>
+          </li>
         </ul>
       </div>
       <div style={{ display: "inline" }} class="form-switch">

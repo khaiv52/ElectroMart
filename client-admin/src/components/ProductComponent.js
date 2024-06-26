@@ -50,7 +50,7 @@ class Product extends Component {
       <div className='mt-2'>
         <div className="container">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-lg-8 col-md-12">
               <h2 className="text-center">PRODUCT LIST</h2>
               <table className="table table-bordered table-striped datatable">
                 <thead className="thead-dark">
@@ -71,7 +71,7 @@ class Product extends Component {
                 {pagination}
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-lg-4 col-md-12">
               <ProductDetail item={this.state.itemSelected} curPage={this.state.curPage} updateProducts={this.updateProducts} />
             </div>
           </div>
