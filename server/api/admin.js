@@ -176,5 +176,14 @@ router.get('/customers/sendmail/:id', JwtUtil.checkToken, async function (req, r
     res.json({ success: false, message: 'Not exists customer' });
   }
 });
+// revenue
+router.get('/revenue', JwtUtil.checkToken, async function (req, res) {
+  try {
+    const revenueData = await OrderDAO.selectProductRevenue();
+    res.json(revenueData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch revenue data' });
+  }
+});
 
 module.exports = router;
